@@ -1,0 +1,12 @@
+<% @tasks.each do |task| %>
+  <% if task.completed %>
+    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+  <% else %>
+    <i class="fa fa-square-o" aria-hidden="true"></i>
+  <% end %>
+  <%= link_to task.title, task_path(task.id) %>:
+  <%= task.details %>
+  <br>
+<% end %>
+
+<%= link_to "create new task", new_task_path %>
