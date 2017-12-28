@@ -1,18 +1,26 @@
-<% @tasks.each do |task| %>
-  <% if task.completed %>
-    <i class="fa fa-check-square-o" aria-hidden="true"></i>
-  <% else %>
-    <i class="fa fa-square-o" aria-hidden="true"></i>
-  <% end %>
-  <%= link_to task.title, task_path(task.id) %>:
-  <%= task.details %>
-  <%= link_to edit_task_path(task.id) do %>
-    <i class="fa fa-pencil" aria-hidden="true"></i>
-  <% end %>
-  <%= link_to task_path(task.id), method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
-    <i class="fa fa-trash-o" aria-hidden="true"></i>
-  <% end %>
-  <br>
-<% end %>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h1>task manager</h1>
+    <%= Date.today %>
+    <br>
+    <% @tasks.each do |task| %>
+      <% if task.completed %>
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      <% end %>
+      <%= task.title %>:
+      <%= task.details %>
+      <%= link_to edit_task_path(task.id), class: "btn btn-primary" do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to task_path(task.id), class: "btn btn-primary", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
+      <br>
+    <% end %>
+    <%= link_to "create new task", new_task_path, class: "btn btn-primary" %>
+  </div>
+</div>
 
-<%= link_to "create new task", new_task_path %>
+

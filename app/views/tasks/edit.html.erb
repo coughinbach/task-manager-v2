@@ -1,6 +1,14 @@
-<%= simple_form_for(@task) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :details %>
-  <%= f.input :completed, as: :radio_buttons %>
-  <%= f.submit "done", class: "btn btn-primary" %>
-<% end %>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h1>edit "<%= @task.title.downcase %>":</h1>
+    <%= simple_form_for(@task) do |f| %>
+      <%= f.input :title, label: "title" %>
+      <%= f.input :details, label: "details" %>
+      <%= f.input :completed, as: :boolean, label: "mark task as completed?" %>
+      <%= f.submit "done", class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to tasks_path, class: "btn btn-primary" do %>
+      <i class="fa fa-undo" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>
