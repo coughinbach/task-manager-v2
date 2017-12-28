@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <h1>task manager</h1>
-    <%= Date.today %>
+    for <%= Date.today.to_s(:long).downcase %>:
     <br>
     <% @tasks.each do |task| %>
       <% if task.completed %>
@@ -11,12 +11,33 @@
       <% end %>
       <%= task.title %>:
       <%= task.details %>
-      <%= link_to edit_task_path(task.id), class: "btn btn-primary" do %>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to task_path(task.id), class: "btn btn-primary", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+      <br>
+
+
+
+      <div class="completed-box">
+        <%= link_to task_path(task.id), class: "btn btn-primary", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
         <i class="fa fa-trash-o" aria-hidden="true"></i>
       <% end %>
+        <form novalidate="novalidate" class="simple_form edit_task" id="edit_task_<%= task.id %>" action="/tasks/<%= task.id %>" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="UmdU/gjry4ftyI1MxC5QO2xO0rODBlu1mW3WLSC+NUrb3J2BXlQ7yRwcNtw8HSyvdQ2gfSEKRmXrvaRiH1KLxw==" type="hidden">
+        <div class="form-group radio_buttons optional task_completed">
+          <input name="task[completed]" value="" type="hidden">
+          <span class="radio">
+            <label for="task_completed_true">
+              <input class="radio_buttons optional" value="true" name="task[completed]" id="task_completed_true" type="hidden">
+              <input name="commit" value="mark as completed" class="btn btn-primary" data-disable-with="mark as completed" type="submit">
+            </label>
+          </span>
+        </div>
+        </form>
+
+      </div>
+
+
+
+
+
+
       <br>
     <% end %>
     <%= link_to "create new task", new_task_path, class: "btn btn-primary" %>
