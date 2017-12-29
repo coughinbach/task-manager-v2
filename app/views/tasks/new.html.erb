@@ -1,13 +1,19 @@
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3">
-    <h1>add new task:</h1>
-    <%= simple_form_for(@task) do |f| %>
-      <%= f.input :title %>
-      <%= f.input :details %>
-      <%= f.submit "add", class: "btn btn-primary" %>
-    <% end %>
-    <%= link_to tasks_path, class: "btn btn-primary" do %>
-      <i class="fa fa-undo" aria-hidden="true"></i>
-    <% end %>
+    <div class="manager">
+      <div class="form">
+        <h1>add new task:</h1>
+        <%= simple_form_for(@task) do |f| %>
+          <%= f.input :title, label: "task name" %>
+          <%= f.input :details, label: "task details" %>
+          <%= f.submit "add", class: "btn btn-big" %>
+        <% end %>
+      </div>
+      <div class="form-nav">
+        <%= link_to tasks_path, class: "btn btn-small" do %>
+          <i class="fa fa-undo" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

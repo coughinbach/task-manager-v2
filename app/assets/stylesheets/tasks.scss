@@ -2,6 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  font-family: "Montserrat";
+  background-color: #4f5d75;
+}
+
+h1 {
+  color: #ef8354;
+  font-size: 40px;
+}
+
+h2 {
+  color: #4f5d75;
+  font-size: 26px;
+}
+
+p {
+  color: #2f3834;
+}
+
+.manager {
+  background-color: white;
+  padding: 20px 0px;
+  margin: 40px 0px;
+  border-bottom: 5px solid #ef8354;
+  border-radius: 5px;
+}
+
 .to-do, .completed, .footer {
   padding: 0px 30px;
 }
@@ -19,5 +46,4 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
 }

@@ -1,0 +1,31 @@
+.form, .form-nav {
+  padding: 0px 30px;
+  margin: 15px 0px;
+  background-color: white;
+}
+
+.form-nav {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-content: center;
+  margin-top: -50px;
+}
+
+.form {
+  label {
+    letter-spacing: 2px;
+    font-weight: lighter;
+  }
+  #task_title, #task_details {
+    border: 1px solid #eff2f2;
+    border-radius: 2px;
+    font-weight: lighter;
+    box-shadow: none;
+    &:focus {
+      border-bottom: 3px solid #8aa399;
+    }
+  }
+}
+
+

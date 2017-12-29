@@ -1,9 +1,19 @@
+.btn-small, .btn-big {
+  font-weight: bolder;
+  color: white;
+  &:hover {
+    color: #2f3834;
+  }
+}
+
 .btn-small {
-  background-color: red;
+  background-color: #ef8354;
   margin: 0px 5px;
+
+
 }
 
 .btn-big {
   padding: 15px 20px;
-  background-color: blue;
+  background-color: #8aa399;
 }

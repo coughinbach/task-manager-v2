@@ -1,9 +1,11 @@
 .task-card, .completed-card {
-  border: 1px solid black;
   margin: 15px 0px;
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
+  background-color: #f4f7f7;
+  box-shadow: 2px 1px 1px rgba(79, 93, 117, .2);
+  border-radius: 2px;
 }
 
 .task-checkbox {
@@ -14,6 +16,7 @@
   width: 10%;
   i {
     font-size: 32px;
+    color: #4f5d75;
   }
 }
 
