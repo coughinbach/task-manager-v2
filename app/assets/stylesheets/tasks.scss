@@ -1,3 +1,23 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.to-do, .completed, .footer {
+  padding: 0px 30px;
+}
+
+.add-new {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}

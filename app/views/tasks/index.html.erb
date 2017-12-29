@@ -1,36 +1,66 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-    <h1>task manager</h1>
-    for <%= Date.today.to_s(:long).downcase %>:
-    <br>
-    <% @tasks.each do |task| %>
-      <% if task.completed %>
-        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-      <% else %>
-        <i class="fa fa-square-o" aria-hidden="true"></i>
-      <% end %>
-      <%= task.title %>:
-      <%= task.details %>
-      <br>
-      <div class="user-actions">
-        <form novalidate="novalidate" class="simple_form edit_task" id="edit_task_<%= task.id %>" action="/tasks/<%= task.id %>" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="UmdU/gjry4ftyI1MxC5QO2xO0rODBlu1mW3WLSC+NUrb3J2BXlQ7yRwcNtw8HSyvdQ2gfSEKRmXrvaRiH1KLxw==" type="hidden">
-        <div class="form-group radio_buttons optional task_completed" style="margin: 0px; ">
-          <input name="task[completed]" value="" type="hidden">
-          <span class="radio">
-            <label for="task_completed_true" style="padding: 0px;">
-              <input class="radio_buttons optional" value="true" name="task[completed]" id="task_completed_true" type="hidden">
-              <input name="commit" value="✓" class="btn btn-user-actions" data-disable-with="✓" type="submit">
-            </label>
-          </span>
-        </div>
-        </form>
-        <%= link_to task_path(task.id), class: "btn btn-user-actions", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
-        <i class="fa fa-trash-o" aria-hidden="true"></i>
+    <div class="to-do">
+      <h1>task manager</h1>
+      <h2>to do for <%= Date.today.to_s(:long).downcase %>:</h2>
+      <% @tasks.each do |task| %>
+        <% unless task.completed %>
+          <div class="task-card">
+            <div class="task-checkbox">
+              <i class="fa fa-square-o" aria-hidden="true"></i>
+            </div>
+            <div class="task-info">
+              <%= task.title %>
+              <%= task.details %>
+            </div>
+            <div class="user-actions">
+              <form novalidate="novalidate" class="simple_form edit_task" id="edit_task_<%= task.id %>" action="/tasks/<%= task.id %>" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="UmdU/gjry4ftyI1MxC5QO2xO0rODBlu1mW3WLSC+NUrb3J2BXlQ7yRwcNtw8HSyvdQ2gfSEKRmXrvaRiH1KLxw==" type="hidden">
+              <div class="form-group radio_buttons optional task_completed" style="margin: 0px; ">
+                <input name="task[completed]" value="" type="hidden">
+                <span class="radio">
+                  <label for="task_completed_true" style="padding: 0px;">
+                  <input class="radio_buttons optional" value="true" name="task[completed]" id="task_completed_true" type="hidden">
+                  <input name="commit" value="✓" class="btn btn-small" data-disable-with="✓" type="submit">
+                  </label>
+                </span>
+              </div>
+              </form>
+              <%= link_to edit_task_path(task.id), class: "btn btn-small" do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to task_path(task.id), class: "btn btn-small", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-      </div>
-      <br>
-    <% end %>
-    <%= link_to "create new task", new_task_path, class: "btn btn-user-actions" %>
+      <% end %>
+    </div>
+
+    <div class="add-new">
+      <%= link_to "create new task", new_task_path, class: "btn btn-big" %>
+    </div>
+
+    <div class="completed">
+      <h2>you've accomplished:</h2>
+      <% @tasks.each do |task| %>
+        <% if task.completed %>
+          <div class="completed-card">
+            <div class="task-checkbox">
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+            </div>
+            <div class="task-info">
+              <%= task.title %>
+              <%= task.details %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="footer">
+      <h2>keep up the good work!</h2>
+    </div>
   </div>
 </div>
 
