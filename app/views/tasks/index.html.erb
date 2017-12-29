@@ -19,18 +19,18 @@
           <span class="radio">
             <label for="task_completed_true" style="padding: 0px;">
               <input class="radio_buttons optional" value="true" name="task[completed]" id="task_completed_true" type="hidden">
-              <input name="commit" value="✓" class="btn btn-primary" data-disable-with="✓" type="submit">
+              <input name="commit" value="✓" class="btn btn-user-actions" data-disable-with="✓" type="submit">
             </label>
           </span>
         </div>
         </form>
-        <%= link_to task_path(task.id), class: "btn btn-primary", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+        <%= link_to task_path(task.id), class: "btn btn-user-actions", method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         <% end %>
       </div>
       <br>
     <% end %>
-    <%= link_to "create new task", new_task_path, class: "btn btn-primary" %>
+    <%= link_to "create new task", new_task_path, class: "btn btn-user-actions" %>
   </div>
 </div>
 
